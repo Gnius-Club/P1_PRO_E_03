@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook - Sesión 3: ¡Asegurando la Magia! – Calidad del Núcleo</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6; }
+        .container { max-width: 1000px; margin: auto; padding: 20px; }
+        .header { background-color: #ffa500; color: white; text-align: center; padding: 10px; } /* Orange Accent */
+        .activity { margin-bottom: 20px; }
+        details > summary {
+            background-color: #ffa500; /* Orange Accent */
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 0px; /* Reduced margin */
+            font-weight: bold;
+            list-style: none; /* Hide default arrow */
+            position: relative;
+            outline: none;
+            border-radius: 5px 5px 0 0; /* Rounded top corners */
+        }
+        details > summary::-webkit-details-marker { display: none; } /* Hide default arrow for Chrome/Safari */
+        details > summary::before { /* Custom Arrow */
+            content: '▶';
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.9em; /* Slightly larger arrow */
+            transition: transform 0.2s;
+        }
+        details[open] > summary::before { /* Custom Arrow when open */
+            transform: translateY(-50%) rotate(90deg);
+        }
+        details .content { /* Content visible by default inside details */
+             display: block;
+             padding: 15px; /* More padding */
+             border: 1px solid #ddd;
+             border-top: none; /* Avoid double border with summary */
+             margin-bottom: 10px;
+             border-radius: 0 0 5px 5px; /* Rounded bottom corners */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px; /* Add some space above the table */
+        }
+        th, td {
+            padding: 12px; /* Slightly more padding */
+            border: 1px solid #ddd;
+            text-align: left;
+            vertical-align: top; /* Ensure content aligns at the top */
+        }
+        th {
+            background-color: #f8f8f8; /* Lighter grey background for headers */
+            font-weight: bold;
+        }
+        /* Style for the 'Action' column */
+        td:first-child {
+            width: 50%;
+        }
+        /* Style for the 'Dialogue' column */
+        td:last-child {
+            width: 50%;
+        }
+        /* Making facilitator instructions clearer */
+        td em, td i { /* Style for italicized facilitator notes */
+            color: #555;
+            font-style: italic;
+            display: block; /* Put notes on new lines */
+            margin-top: 5px;
+        }
+        /* Ensure step <strong> tags render bold */
+        td strong { font-weight: bold; display: block; margin-bottom: 5px; }
+
+
+        span[style*="color: red;"] {
+            font-weight: bold;
+        }
+        ul, ol {
+            margin-top: 5px; /* Adjust spacing for lists */
+            margin-bottom: 10px;
+            padding-left: 25px; /* Indent lists slightly more */
+        }
+        li {
+            margin-bottom: 8px; /* More space between list items */
+        }
+        .time-title { margin-bottom: 20px; text-align: center; font-size: 1.2em; color: #555; font-weight: bold;}
+         hr { border: none; border-top: 1px solid #eee; margin: 8px 0; } /* Subtle separator */
+         .subtitle { font-size: 0.9em; color: #e0e0e0; margin-top: 5px;} /* Subtitle style from example */
+    </style>
+    <script>
+        // Basic script to ensure details elements work consistently if needed,
+        // but modern browsers handle <details> natively.
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Playbook - Sesión 3: ¡Asegurando la Magia! – Calidad del Núcleo</h1>
+    </div>
+    <div class="container">
+        <h2 class="time-title">Tiempo efectivo de clase: 40 minutos</h2>
+
+        <!-- Resumen de Sesión -->
+        <details id="activity-0" class="activity" open> <!-- Open by default -->
+            <summary>📝 Resumen de Sesión</summary>
+            <div class="content">
+                <table>
+                    <tr>
+                        <td style="width: 50%; padding: 10px; border-right: 1px solid #ddd;">
+                            <strong>🎯 Objetivo de la Sesión:</strong>
+                            <ul>
+                                <li>Realizar pruebas exhaustivas de la interacción principal (clics Héroe/Villano) para identificar errores (bugs).</li>
+                                <li>Corregir los bugs encontrados en los bloques de programación o posicionamiento.</li>
+                                <li>Asegurar que el flujo central de la historia funcione de manera estable y correcta según el plan (T-Bar).</li>
+                                <li>Reforzar el rol del Probador/a como líder de calidad y la colaboración en la resolución de problemas.</li>
+                            </ul>
+                        </td>
+                        <td style="width: 50%; padding: 10px;">
+                            <strong>🔑 Entregable Clave:</strong> Prototipo de Scratch Jr. con la interacción central (clics Héroe/Villano -> Escenas Mejor/Peor) funcionando correctamente y sin errores evidentes tras pruebas rigurosas.
+                            <br><br>
+                            <strong>⏱️ Duración Estimada:</strong> 40 minutos.
+                            <br><br>
+                            <strong>🛠️ Materiales Específicos:</strong>
+                            <ul>
+                                <li>Dispositivos con Scratch Jr. y el proyecto guardado de la Sesión 2.</li>
+                                <li>Dibujos de la Fase 2 (T-Bar).</li>
+                                <li>Tablero Kanban con el estado actualizado de la Sesión 2.</li>
+                                <li>Nuevas tarjetas de tareas para Kanban: "Probar Interacción Central", "Corregir Errores de Flujo".</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </details>
+
+        <!-- Actividad 1: Stand-up de Calidad -->
+        <details id="activity-1" class="activity">
+            <summary>🔍 Actividad 1: Stand-up de Calidad ⏰ Tiempo: 5 minutos</summary>
+            <div class="content">
+                <table>
+                    <tr>
+                        <th style="width: 50%;">Acción</th>
+                        <th style="width: 50%;">Diálogo del Maestro</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Paso 1 (2 min): Revisión y Objetivo del Día</strong>
+                            <br>Reunir a los equipos frente a su dispositivo con el proyecto de la Sesión 2 abierto.
+                            <br>Preguntar qué funciona bien (los clics básicos).
+                            <br><strong>Proyectar Diapositiva 1</strong> (Título de la Sesión + Iconos de lupa, bug/error, check de calidad).
+                        </td>
+                        <td>
+                            "¡Equipos de Héroes! ¡Listos para asegurar nuestra magia?"
+                            <br><br>
+                            "La sesión pasada le dimos poder al clic, ¿verdad? ¿Qué funciona bien ahora? <em>(Esperar respuestas: Tocar Héroe va a Mejor, tocar Villano va a Peor).</em> ¡Exacto!"
+                            <br><br>
+                            "Hoy seremos ¡CAZADORES DE ERRORES! <em>(Mostrar Diapositiva 1)</em>. Nuestra misión es probar MUCHO nuestra aventura para encontrar cualquier cosita que no funcione bien (bugs) y ¡arreglarla! Queremos que la magia funcione ¡siempre!"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Paso 2 (3 min): Roles y Kanban</strong>
+                             <br>Enfatizar que el/la **Probador/a de Aventura** lidera hoy. Revisar los roles (Constructor/a arregla, Diseñador/a ayuda a identificar).
+                             <br>Permitir rotación si se desea, confirmar roles.
+                             <br>Añadir tarjetas "Probar Interacción Central" y "Corregir Errores de Flujo" a "Tareas por Hacer" en Kanban.
+                        </td>
+                        <td>
+                            "Para esta misión de calidad, ¡nuestro/a **Probador/a de Aventura** es el líder! Él o ella guiará las pruebas."
+                            <br><br>
+                            "El/La Constructor/a será el 'arregla-magia', listo/a para corregir los bloques. Y el/la Diseñador/a ayudará a ver si el error es visual o de la historia."
+                             <br><br>
+                            "¿Mantenemos roles o rotamos? <em>(Confirmar roles)</em>. ¡Perfecto!"
+                            <br><br>
+                             "Añadamos nuestras tareas al Mapa Mágico: 'Probar Interacción Central' y 'Corregir Errores de Flujo'."
+                             <br>
+                            <em>(Añadir tarjetas al Kanban).</em> "¡Equipo de calidad, listo para la acción!"
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </details>
+
+        <!-- Actividad 2: Ciclo Pruebas y Arreglos del Núcleo -->
+        <details id="activity-2" class="activity">
+            <summary>⚙️ Actividad 2: Ciclo Pruebas y Arreglos del Núcleo ⏰ Tiempo: 30 minutos</summary>
+            <div class="content">
+                <table>
+                    <tr>
+                        <th style="width: 50%;">Acción</th>
+                        <th style="width: 50%;">Diálogo del Maestro</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Paso 1 (15 min): Pruebas Lideradas por el Probador/a</strong>
+                            <br>El **Probador/a** lidera: prueba la interacción Héroe/Villano repetidamente y en diferentes condiciones (clics muy rápidos, clics lentos, tocar justo en el borde del personaje, tocar ambos casi a la vez).
+                            <br>El **Probador/a** comunica CLARAMENTE cualquier error encontrado al equipo (Ej: "¡Oye, al tocar muy rápido al Villano, a veces me lleva a la escena del Héroe!" o "El Héroe no siempre reacciona si le toco en la esquina").
+                            <br>Mover tarjeta "Probar Interacción Central" a "¡Haciendo Ahora!".
+                            <br>Facilitador circula, anima al Probador/a a ser exhaustivo y a comunicar bien los errores.
+                        </td>
+                        <td>
+                            "¡Probadores, su momento ha llegado! ¡Sean súper detectives!"
+                            <br><br>
+                            "Prueben tocar al Héroe... ¡muchas veces! ¿Siempre va a la Escena Mejor? Ahora, toquen al Villano... ¿Siempre va a la Peor?"
+                            <br><br>
+                            "Intenten trucos: ¿Qué pasa si tocan súper rápido? ¿Y si tocan justo en la orillita del personaje? ¿Y si intentan tocar a los dos muy seguido?"
+                            <br><br>
+                            "¡Si encuentran algo raro, un 'bug', díganlo ALTO Y CLARO al equipo! Por ejemplo: '¡Ayuda! ¡El clic del Héroe falló!' o 'El Villano me llevó a la escena equivocada'."
+                             <br><br>
+                            "¡Movemos 'Probar Interacción Central' a '¡Haciendo Ahora!'. ¡A cazar esos bugs!"
+                             <br>
+                            <em>(Facilitador observa: "¿Probaste tocar en esa esquina, Probador?", "Buena descripción del error, ¡ahora el equipo sabe qué buscar!").</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Paso 2 (13 min): Corrección Liderada por el Constructor/a</strong>
+                            <br>Cuando se reporta un error, el **Constructor/a** busca la causa en los bloques (¿Está mal conectado? ¿Es la página incorrecta? ¿Falta algún bloque?).
+                            <br>El **Diseñador/a** ayuda a diagnosticar, comparando el flujo con el T-Bar (¿La lógica de la historia es correcta?) o los dibujos (¿El problema es visual?).
+                            <br>El **Constructor/a** implementa la corrección en los bloques.
+                            <br>Mover tarjeta "Corregir Errores de Flujo" a "¡Haciendo Ahora!" cuando se esté arreglando un bug.
+                            <br>**Proyectar Diapositiva 2** (Mostrar ejemplos visuales de errores comunes y cómo se ven los bloques correctos vs incorrectos, o el flujo Kanban para bugs).
+                            <br>Facilitador apoya en la identificación y corrección de errores más complejos.
+                        </td>
+                        <td>
+                            "¡Equipo, si el Probador encontró un bug, ¡a la carga!"
+                            <br><br>
+                            "Constructor/a, ¡tu turno de ser 'arregla-magia'! Escucha bien el error que dice el Probador. Revisa los bloques del personaje que falló. ¿Están bien conectados? ¿Seleccionaste la página correcta en el bloque rojo? <em>(Referirse a Diapositiva 2 si muestra ejemplos de errores)</em>."
+                            <br><br>
+                            "Diseñador/a, ¿el error tiene que ver con la historia? ¿Debería ir a esa escena según el plan?"
+                            <br><br>
+                            "¡Encuentren el problema y corríjanlo!"
+                            <br><br>
+                            "Cuando estén arreglando un bug, muevan 'Corregir Errores de Flujo' a '¡Haciendo Ahora!'."
+                             <br>
+                            <em>(Facilitador ayuda: "¿Revisaron que el bloque amarillo esté bien puesto?", "¿Están seguros que esa es la página de la Escena Peor?", "A veces un bloque se desconecta, ¡revisen las uniones!").</em>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>
+                            <strong>Paso 3 (2 min): Re-Prueba y Kanban</strong>
+                            <br>Una vez corregido un error, el **Probador/a** vuelve a probar esa parte específica para confirmar que ya funciona bien.
+                            <br>Si el error está corregido y la interacción es estable, mover las tarjetas "Probar Interacción Central" y "Corregir Errores de Flujo" a "✅ ¡Terminado!". Si no, el ciclo vuelve al Paso 2.
+                        </td>
+                        <td>
+                            "¡Constructor/a dice que ya lo arregló! Probador/a, ¡comprueba!"
+                            <br><br>
+                            "Vuelve a hacer la prueba que fallaba. ¿Funciona ahora? ¡Inténtalo varias veces!"
+                            <br><br>
+                            "Si el bug desapareció y todo funciona bien... ¡FELICIDADES! ¡Muevan las tarjetas a '✅ ¡Terminado!' en el Mapa Mágico!"
+                            <br><br>
+                            "Si sigue fallando... ¡no se rindan! Vuelvan a investigar qué pasa."
+                             <br>
+                            <em>(Facilitar la actualización final del Kanban).</em>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </details>
+
+        <!-- Actividad 3: Cierre de Estabilidad -->
+        <details id="activity-3" class="activity">
+            <summary>⭐ Actividad 3: Cierre de Estabilidad ⏰ Tiempo: 5 minutos</summary>
+            <div class="content">
+                <table>
+                    <tr>
+                        <th style="width: 50%;">Acción</th>
+                        <th style="width: 50%;">Diálogo del Maestro</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Paso 1 (2 min): Confirmación Final</strong>
+                            <br>Preguntar a cada equipo si lograron que la interacción central funcione de forma estable.
+                            <br>Celebrar los logros en la caza y corrección de bugs.
+                        </td>
+                        <td>
+                            "¡Equipos Cazadores de Errores! ¿Cómo les fue? ¿Lograron que la magia de los clics funcione sin problemas ahora?"
+                            <br><br>
+                            "¡Encontrar y arreglar errores es parte súper importante de crear cosas geniales! ¡Estoy muy orgulloso de cómo trabajaron juntos para asegurar la magia! ¡Aplausos para todos!"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Paso 2 (2 min): Guardar Proyecto (¡Fundamental!)</strong>
+                            <br>Guiar EXPLICITAMENTE a los Constructores para guardar la versión estable del proyecto.
+                            <br>Asegurarse de que todos los equipos hayan guardado correctamente.
+                            <br><strong>Proyectar Diapositiva 3</strong> (Icono grande de Guardar + Mensaje "¡Asegura tu Magia Estable!").
+                        </td>
+                        <td>
+                            "¡Ahora que funciona bien, es VITAL guardar esta versión estable! ¡Que no se nos escape la magia arreglada!"
+                            <br><br>
+                            "Constructores, ¡última vez por hoy! Pulsen el botón de guardar (casita o ✓). <em>(Mostrar Diapositiva 3)</em>."
+                             <br><br>
+                            <em>(Circular y verificar que todos guarden).</em> "¿Todo guardado? ¡Excelente!"
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>
+                            <strong>Paso 3 (1 min): Próximos Pasos y Cierre</strong>
+                            <br>Anunciar brevemente el objetivo de la Sesión 4 (Añadir Movimiento y Sonido).
+                            <br>Felicitar final.
+                        </td>
+                        <td>
+                            "¡Felicidades, equipos! ¡El corazón de su aventura ahora es estable y funciona de maravilla!"
+                            <br><br>
+                            "La próxima sesión... ¡añadiremos más VIDA! Haremos que nuestros personajes y escenas se muevan un poquito y ¡hagan sonidos! ¡Será aún más divertido!"
+                            <br><br>
+                            "¡Hicieron un trabajo excelente hoy asegurando la magia! ¡Nos vemos para añadir más chispa! ¡Adiós!"
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </details>
+
+    </div> <!-- Fin del container -->
+</body>
+</html>
